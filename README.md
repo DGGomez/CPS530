@@ -10,3 +10,20 @@ Page 4: Demo page
 Page 5: Conclusion. Rate experience. 
 
 Page 6: Credit and References page. (All Team members and responsibility)
+
+TODO:
+
+- Store front end
+    - login
+    - main page
+    - purchase
+    - order page
+    - About
+    - contact us
+    - Sitemap
+
+- Store back end
+    - Login
+    - Purchase (stripe)
+    - check order (status)
+    - email
