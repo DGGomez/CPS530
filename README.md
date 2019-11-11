@@ -23,7 +23,7 @@ TODO:
     - Sitemap
 
 - Store back end
-    - Login
+    - Login (done without testing)
     - Purchase (stripe)
     - check order (status)
-    - email
+    - email (done without testing)
