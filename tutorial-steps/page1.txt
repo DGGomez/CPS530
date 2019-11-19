@@ -1,23 +1,44 @@
-Front End:
-
-React
+Front End: React
 
 Popularity:
+    React is a very popular language created by facebook. It has been adopted
+    by large groups of people and companies such as facebook, instagram, netflix, the new york times, drop boxs and many more.
 
 Strengths:
 
+- immediate rerendering
+- With redux it can pass information in any direction
+- Easy to learn and quick to make
+
 Weaknesses:
+
+- large libraries make it difficult to find what modules you need
+- easy to learn, harder to master
+- Difficult to implement redux
 
 Which Devs use it(For what kind of websites):
 
-Back End:
-
-Ruby On Rails
+React is used for building multipage websites and web apps. It allows for
+instance rerendering which makes it more interactive for users. 
+-------------------------------------------------------
+Back End: Ruby On Rails
 
 Popularity:
 
+Ruby on rails is a very popular framework used by shopify, pagerduty, coinbase, kickstarter and many more.
+This framework is often used as a monolithic API in these companies and its use is constantly increasing.
+
 Strengths:
 
+- fast developement
+- automated testing
+- protection against attacks
+
 Weaknesses:
+- slower runtimes then other options
 
 Which Devs use it(For what kind of websites):
+
+This tool can be used to make web apps, websites, and APIs. It allows for
+html rednering as well as including backend logic. With its fast
+development time it is often used for the creation of quick prototypes. 
