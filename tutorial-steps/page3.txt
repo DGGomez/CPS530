@@ -3,19 +3,88 @@ Assumption: You have already ran "rails new project" and "npx create-react-app n
 Front end:
 
     Step 1: Store
+        - Create a folder called store and a file called index.js 
+        * - Paste image of code for store/index.js
+        - This links the reducers to a storage unit to be passed to
+        other pages on request through props
 
     Step 2: Reducers
+         - Create a folder called reducers and a file called index.js
+         *- paste image of code for reducer/index.js
+         - This code binds the reducers to a central point that will be stored by the store
 
+         - Create a file called authReducer.js
+         *- paste image of code for authReducer here
+         - This saves the data handed to it to a variable ( Here the variables are user and token)
+         
     Step 3: Actions
+         - Create a folder called actions and a file called index.js
+         *- Paste image of code for actions/index.js
+         - This passes the code onto the page for importing ( So you don't have to specify which action you are using)
+         - Create a file called authActions.js
+         *- Paste image of code for authActions.js
+         - This uses axios to send requests to our backend service then takes that information
+         and puts it into a reducer to be stored, so it can be passed on to the page
+         
+         Note - If you have an API external to your app then you will need to add that configuration index
+         package.json as proxy: "YOUR_URL.com/api/info"
+
 
     Step 4: Page and Styling
+
+        *- paste immage of code from loginPage.js
+        - To begin with at the top we will be importing react-bootstrap for prebuilt components
+        - react-redux is used to link to another page, after the user logins in they will be redicted to another page
+        
+        Constructor:
+        - The contructor creates the beginning information of the page here we start all the variables
+        we will be using in state as well as passing existing props (stored variables)
+
+        ComponentDidMount:
+        - This is an action when page has been rendered. We have no information to put here at the moment.
+
+        Validate Form:
+        - This will simply check if the data being passed to the login action is empty
+
+        handleChange:
+        - This will update our state values by running setState which will alter the variables
+        in real time based on their id tags
+
+        handleSubmit:
+        - This will send the completed data to the login action created before
+
+        render:
+        - Here using react-bootstrap we create a form for collecting data. This is what users
+        will see on this page.
+
+        Style:
+        - This is where the CSS for react is done
+
+        export: 
+        - This allows for other .js files to import and use this page. This will be sent to router or app.js
+        for rendering.
 
 Back End:
 
     Step 1: Gems installation
+        - add to Gemfile:
+        gem devise (creates basic actions for authenticaiton: login, signup, forgot password)
+        gem bcrypt (encrypts data for devise use as it will store passwords as hashes)
+        gem 'responders' (Handles JSON input)
 
+        bundle install
+    
     Step 2: Devise
+        run - rails g devise: install
+        go to - devise.rb change email
+        run - rails g devise User
+        rails db:migrate
 
-    Step 3: db:migrate
+    Step 3: configuration
+        - in config/database.yaml change database info to your db info
 
-    Step 4: configuration
+    Step 4: optional
+        - change migration files in db/migrate
+        - Here you can change how the data will be stored and which actions will be allowed
+        
+
