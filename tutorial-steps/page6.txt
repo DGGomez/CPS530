@@ -1,0 +1,9 @@
+
+Daniel Gomez - Backend for demo: login and signUp
+             - Frontend for demo: Action listeners and redux implimentation
+
+William Murray - Front end for demo: Styling and creation of pages
+
+Thomas Young-Audet - Back end for demo: Ordering and Purchasing actions
+
+Ivan - Front end for tutorial: Creation of pages

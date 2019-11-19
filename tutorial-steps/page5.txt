@@ -1,0 +1,40 @@
+React:
+
+8/10
+
+Pros
+- Easy to configure and use
+- Lots of help online
+- Good for multipage web apps and websites
+
+Cons: 
+- Error messages don't give a lot of feed back on problem
+- Not much documentation on redux
+
+Comment:
+
+React was a good framework for building our multipage website. It was very easy to install
+and with basic tutorials you can make quick websites. The problems started when introducing
+redux and action listeners as there isn't a great deal of information about them as well there 
+are several different ways of performing those actions. Overall though it is
+a great tool for quick multipage apps and web apps.
+
+Ruby on rails:
+
+9/10
+
+pros:
+- Does a lot of the set up work for you
+- Everything is already organized when you create the project
+- Not alot of work to get a fully functional API
+
+cons:
+- Getting use to rails format takes a while as the initial project created is very large
+
+Comment:
+
+Ruby on rails initially is a lot to take in. When you first create your first rails app
+it comes with a large amount of files that need some time to decifer. After the initial 
+confusion though it is clear that each file speeds up configuration for your app. As 
+well the rails api does a lot of the work for you. Building an API with rails was easy and
+fast.

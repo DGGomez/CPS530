@@ -1,3 +1,24 @@
 React:
 
+    Step 1: Install NPM @ https://nodejs.org
+
+    Step 2: install react with NPM
+        - npm install -g create-react-app
+
+    Step 3: Create a project
+        - npx create-react-app first-project
+
 Ruby on Rails:
+
+    Step 1: Download git @ https://git-scm.com/downloads
+
+    Step 2: download Yarn @ https://yarnpkg.com/lang/en/docs/install/#windows-stable
+
+    Step 3: Open Bash Terminal and download rails
+        - curl http://installrails.com/update_rubygems.rb | ruby
+    
+    Step 4: Install rails
+        - gem install rails --no-ri --no-rdoc
+
+    Step : Create Project
+        - rails new sample_app

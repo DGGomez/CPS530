@@ -1,0 +1,21 @@
+Assumption: You have already ran "rails new project" and "npx create-react-app new-project"
+
+Front end:
+
+    Step 1: Store
+
+    Step 2: Reducers
+
+    Step 3: Actions
+
+    Step 4: Page and Styling
+
+Back End:
+
+    Step 1: Gems installation
+
+    Step 2: Devise
+
+    Step 3: db:migrate
+
+    Step 4: configuration
