@@ -1,0 +1,101 @@
+import React, {Component} from "react";
+import {Button, FormGroup, FormControl } from "react-bootstrap";
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+import {RegisterUser} from "../actions";
+import { withCookies, Cookies } from 'react-cookie';
+
+class SignUp extends Component {
+constructor(props) {
+    super(props);
+    const {cookies} = props;
+    this.state = {
+        email: "",
+        password: "",
+        username: "",
+        name: ""
+    };
+    this.state.csrfToken = cookies.get('XSRF-TOKEN');
+
+}
+
+componentDidMount(){
+  console.log(this.props);
+}
+validateForm() {
+    return this.state.email.length > 0 && this.state.password.length > 0;
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { RegisterUser, history } = this.props;
+    const { email, password, username, name, csrfToken} = this.state;
+    console.log('submit: ', email, password, username, name);
+
+    RegisterUser(email, password, username, name, csrfToken,() => this.props.history.push("/dashboard"));
+  }
+  render() {
+    return (
+
+      <div className="container center-block">
+      <div className="row">
+  <div className="col-md-6 col-md-offset-3">
+        <form onSubmit={this.handleSubmit}>
+
+          <FormGroup controlId="username" bsSize="large">
+            <p>Username</p>
+            <FormControl
+              value={this.state.username}
+              onChange={this.handleChange}
+              type="text"
+            />
+          </FormGroup>
+          <FormGroup controlId="name" bsSize="large">
+            <p>Name</p>
+            <FormControl
+              value={this.state.name}
+              onChange={this.handleChange}
+              type="text"
+            />
+          </FormGroup>
+          <FormGroup className="form-horizontal" controlId="email" bsSize="large">
+            <p>Email</p>
+            <FormControl
+              autoFocus
+              type="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="password" bsSize="large">
+            <p>Password</p>
+            <FormControl
+              value={this.state.password}
+              onChange={this.handleChange}
+              type="password"
+            />
+          </FormGroup>
+          <Button
+            block
+            bsSize="large"
+            disabled={!this.validateForm()}
+            type="submit"
+          >
+            Register
+          </Button>
+        </form>
+        </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+export default withCookies(connect(null, { RegisterUser })(SignUp));

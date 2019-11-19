@@ -1,0 +1,24 @@
+
+<body>
+<div class='header' style='text-align:center;'>
+<h1>Welcome to the Store!</h1>
+</div>
+<div class='content'>
+<p>Front end peeps, modify this file in app/views/store_front/index.html.erb</p>
+
+<p>These are the items that we have for sale (aka that are in the database)</p>
+
+<% @items.each do |item| %>
+    <div class=item>
+    <fieldset>
+    <p>
+    <img src="<%=item.photo_url%>" alt="pic of <%=item.name%>" style="height:100px;"> 
+    <%=item.name%> <br> 
+    <%=item.price%>$ <br>
+    There are <%=item.in_stock%> left in stock<br><br>
+    </p>
+    </fieldset>
+    </div>
+<% end %>
+</div>
+</body>

@@ -1,0 +1,9 @@
+entrypoint: bundle exec rackup --port $PORT
+env: flex
+runtime: ruby
+
+env_variables:
+  SECRET_KEY_BASE: 0453432807b621c0db4177a4fcc6a263f418dd212a1ab0140e98624a03cf12721127cb98f5484fbe51b5753a291e373c932f3fa6ffc0dda6976a14a7da4ea137
+
+beta_settings:
+  cloud_sql_instances: decoded-battery-257822:us-central1:postgres-instance

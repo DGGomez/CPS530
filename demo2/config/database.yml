@@ -1,0 +1,31 @@
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+development:
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  username: postgres
+  password: Jikop8982 
+  database: postgres-database
+  host: /cloudsql/decoded-battery-257822:us-central1:postgres-instance 
+
+test:
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  username: postgres
+  password: Jikop8982 
+  database: postgres-database
+  host: /cloudsql/decoded-battery-257822:us-central1:postgres-instance 
+
+production:
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  username: postgres
+  password: Jikop8982
+  database: postgres-database
+  host: /cloudsql/decoded-battery-257822:us-central1:postgres-instance
