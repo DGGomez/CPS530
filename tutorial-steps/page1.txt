@@ -1,0 +1,23 @@
+Front End:
+
+React
+
+Popularity:
+
+Strengths:
+
+Weaknesses:
+
+Which Devs use it(For what kind of websites):
+
+Back End:
+
+Ruby On Rails
+
+Popularity:
+
+Strengths:
+
+Weaknesses:
+
+Which Devs use it(For what kind of websites):

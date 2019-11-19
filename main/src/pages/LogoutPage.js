@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { logoutUser } from '../actions';
+import { withCookies, Cookies } from 'react-cookie';
 
 class LogoutPage extends Component {
     componentDidMount() {
@@ -23,4 +24,4 @@ const mapStateToProps = ({ auth }) => {
     return { user: auth.user };
 };
 
-export default connect(mapStateToProps, { logoutUser })(LogoutPage);
+export default withCookies(connect(mapStateToProps, { logoutUser })(LogoutPage));

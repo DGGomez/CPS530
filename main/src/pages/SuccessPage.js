@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
+import { withCookies, Cookies } from 'react-cookie';
 
 
 class SuccessPage extends Component {
@@ -14,12 +15,11 @@ class SuccessPage extends Component {
     return (
       <div className="dashboard__container">
         <div className="profile__container">
-          <div className="profile-body__container"><h1>Hi I don't have any tips...sorry</h1></div>
-          <div><p>You're Order has been placed</p></div>
+          <div><p>Success</p></div>
         </div>
       </div>
     );
   }
 }
 
-export default connect(null)(SuccessPage);
+export default withCookies(connect(null)(SuccessPage));

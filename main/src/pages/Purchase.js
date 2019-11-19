@@ -1,37 +1,91 @@
-import React, {Component} from 'react';
-import {CardElement, injectStripe} from 'react-stripe-elements';
+import React, {Component} from "react";
+import {Button, FormGroup, FormControl } from "react-bootstrap";
+import {connect} from "react-redux";
+import {purchase} from "../actions";
+import { withCookies, Cookies } from 'react-cookie';
 
-class PaymentForm extends Component {
+class Purchase extends Component {
 constructor(props) {
-  super(props);
-  this.state = {complete: false};
-  this.submit = this.submit.bind(this);
+    super(props);
+
+    this.state = {
+        user: "",
+        item: "Soil",
+        quantity: "1"
+    };
+    const {cookies} = props;
+
+    this.state.csrfToken = cookies.get('XSRF-TOKEN');
 }
 
-async submit(ev) {
-  let {token} = await this.props.stripe.createToken({name: "Name"});
-  let response = await fetch("/charge", {
-    method: "POST",
-    headers: {"Content-Type": "text/plain"},
-    body: token.id
-  });
-
-  if (response.ok) this.setState({complete: true});
-  this.props.history.push("/dashboard");
-  
+// can't order until you are logged in
+componentDidMount(){
+  console.log(this.props);
+  const { user, token } = this.props;
 }
+validateForm() {
+    return this.state.item.length > 0 && this.state.quantity.length > 0;
+  }
 
-render() {
-  if (this.state.complete) return <h1>Purchase Complete</h1>;
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
 
-  return (
-    <div className="checkout">
-      <p>Would you like to complete the purchase?</p>
-      <CardElement />
-      <button onClick={this.submit}>Send</button>
-    </div>
-  );
+  handleSubmit = event => {
+    event.preventDefault();
+    const { user, token, purchase, history } = this.props;
+    const { item, quantity, csrfToken } = this.state;
+    console.log('submit: ', token, item, quantity);
+
+    purchase(user, item, quantity, csrfToken, () => this.props.history.push("/order"));
+  }
+  //if not loged in login
+  // else show page
+  render() {
+      const {user} = this.props;
+    return (
+
+      <div className="container center-block">
+      <div className="row">
+      <div className="col-md-6 col-md-offset-3">
+        <form onSubmit={this.handleSubmit}>
+          <FormGroup className="form-horizontal" controlId="item" bsSize="large">
+            <div>item</div>
+            <FormControl
+              autoFocus
+              type="text"
+              value={this.state.item}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="quantity" bsSize="large">
+            <div>quantity</div>
+            <FormControl
+              value={this.state.quantity}
+              onChange={this.handleChange}
+              type="text"
+            />
+          </FormGroup>
+          <Button
+            block
+            bsSize="large"
+            disabled={!this.validateForm()}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </form>
+        </div>
+        </div>
+      </div>);
+    }
 }
-}
-
-export default injectStripe(PaymentForm);
+const mapStateToProps = ({ auth }) => {
+  return { 
+    user: auth.user,
+    token: auth.token
+  };
+};
+export default withCookies(connect(mapStateToProps, { purchase })(Purchase));

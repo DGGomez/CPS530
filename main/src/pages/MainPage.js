@@ -3,6 +3,7 @@ import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from "react-b
 import { connect } from 'react-redux';
 import { readData } from '../actions';
 import Card from '../components/Card';
+import { withCookies, Cookies } from 'react-cookie';
 
 // show reports
 class DashboardPage extends Component {
@@ -125,4 +126,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { readData })(DashboardPage);
+export default withCookies(connect(mapStateToProps, { readData })(DashboardPage));

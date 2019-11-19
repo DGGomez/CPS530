@@ -2,15 +2,18 @@ import React, {Component} from "react";
 import {Button, FormGroup, FormControl } from "react-bootstrap";
 import {connect} from "react-redux";
 import {loginUser} from "../actions";
+import { withCookies, Cookies } from 'react-cookie';
 
 class LoginPage extends Component {
 constructor(props) {
     super(props);
-
+    const {cookies} = props;
     this.state = {
         email: "",
         password: ""
     };
+    this.state.csrfToken = cookies.get('XSRF-TOKEN');
+
 }
 
 componentDidMount(){
@@ -29,10 +32,9 @@ validateForm() {
   handleSubmit = event => {
     event.preventDefault();
     const { loginUser, history } = this.props;
-    const { email, password } = this.state;
-    console.log('submit: ', email, password);
+    const { email, password, csrfToken } = this.state;
 
-    loginUser(email, password, () => history.push("/success"));
+    loginUser(email, password, csrfToken, () => history.push("/order"));
   }
   render() {
     return (
@@ -74,4 +76,4 @@ validateForm() {
   }
 }
 
-export default connect(null, { loginUser })(LoginPage);
+export default withCookies(connect(null, { loginUser })(LoginPage));

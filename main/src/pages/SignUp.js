@@ -3,17 +3,20 @@ import {Button, FormGroup, FormControl } from "react-bootstrap";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {RegisterUser} from "../actions";
+import { withCookies, Cookies } from 'react-cookie';
 
-class RegisterPage extends Component {
+class SignUp extends Component {
 constructor(props) {
     super(props);
-
+    const {cookies} = props;
     this.state = {
         email: "",
         password: "",
         username: "",
         name: ""
     };
+    this.state.csrfToken = cookies.get('XSRF-TOKEN');
+
 }
 
 componentDidMount(){
@@ -32,10 +35,10 @@ validateForm() {
   handleSubmit = event => {
     event.preventDefault();
     const { RegisterUser, history } = this.props;
-    const { email, password, username, name } = this.state;
+    const { email, password, username, name, csrfToken} = this.state;
     console.log('submit: ', email, password, username, name);
 
-    RegisterUser(email, password, username, name, () => this.props.history.push("/dashboard"));
+    RegisterUser(email, password, username, name, csrfToken,() => this.props.history.push("/dashboard"));
   }
   render() {
     return (
@@ -95,4 +98,4 @@ validateForm() {
 }
 
 
-export default connect(null, { RegisterUser })(RegisterPage);
+export default withCookies(connect(null, { RegisterUser })(SignUp));

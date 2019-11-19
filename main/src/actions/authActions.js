@@ -1,14 +1,25 @@
 import axios from 'axios';
 
-export const RegisterUser = (email,password,username,name,callback) => async(dispatch) =>{
+export const RegisterUser = (emailU,passwordU,username,name, token, callback) => async(dispatch) =>{
     try{
-        let { data } = await axios.post('/register', {email,password,username,name});
-        storeAuthToken(data.token);
+        var user = {
+            email: emailU,
+            password: passwordU,
+            password_confirmation: passwordU
+        }
+        let { data } = await axios.post('/users', {user},
+            {headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-XSRF-TOKEN': token
+            }
+            });
+        storeAuthToken(data.id);
         dispatch({
             type: 'REGISTER',
             payload:{
-                user: data.user,
-                token: data.token
+                user: data.email,
+                token: data.id
             }
         });
         callback();
@@ -18,15 +29,26 @@ export const RegisterUser = (email,password,username,name,callback) => async(dis
     }
 };
 
-export const loginUser = (email,password,callback) => async(dispatch) =>{
+export const loginUser = (emailU,passwordU, token, callback) => async(dispatch) =>{
     try{
-        let { data } = await axios.post('/login', {email,password});
-        storeAuthToken(data.token);
+        var user= {
+                email: emailU,
+                password: passwordU
+            }
+            
+        let { data } = await axios.post('/users/sign_in', {user}, {
+    headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-XSRF-TOKEN': token
+        }
+});
+        storeAuthToken(data.id);
         dispatch({
             type: 'LOGIN',
             payload:{
-                user: data.user,
-                token: data.token
+                user: data.email,
+                token: data.id
             }
         });
         callback();
@@ -40,7 +62,6 @@ export const tokenLogin = () => async (dispatch) => {
     try {
         let token = await fetchAuthToken();
         if(token) {
-            console.log('tokenLogin: ', token);
             let { data } = await axios({
                 method: 'get',
                 url: `/token-login`,

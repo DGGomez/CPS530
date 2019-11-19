@@ -12,7 +12,6 @@ class NavBar extends Component {
                     <div className="navbar-header">
                         <Link to="/" className="navbar-brand">
                             <strong>
-                                <img className="logo" align="left" src="./images/logo_2.png" alt="react-logo"/>
                                 STUFF
                             </strong>
                         </Link>
