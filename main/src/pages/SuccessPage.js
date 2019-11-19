@@ -15,7 +15,7 @@ class SuccessPage extends Component {
       <div className="dashboard__container">
         <div className="profile__container">
           <div className="profile-body__container"><h1>Hi I don't have any tips...sorry</h1></div>
-          <div><p>You're Order has been placed here is your order number:</p></div>
+          <div><p>You're Order has been placed</p></div>
         </div>
       </div>
     );
