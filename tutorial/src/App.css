@@ -1,22 +1,92 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
 }
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #09d3ac;
+}
+.left {
+  padding-right: 3px;
+}
+.right{
+  padding-left:3px;
+  align-items: center;
+  justify-content: center;
+}
+body {
+  color: white;
+  text-indent: 2em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: center;
+}
+title {
+  text-transform: capitalize;
+  text-align: center;
+}
+.grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+  }
+.gradient{
+  background: linear-gradient(to bottom, blue, rgb(255, 255, 255), rgb(255, 255, 252));
+}
+p{
+  color:#000099;
+
+}
+h1{
+  color:#000099;
+  font-weight:normal;
+}
+h2{
+      font-weight:normal;
+      background:#553377;
+}
+h3 {
+      color:#000099;
+      font-weight:normal;
+}
+label {
+      color:#000099;
+      font-weight:normal; 
+}
+
+.content {
+max-width: 500px;
+margin: auto;
+}
+a:link {
+color: blue;
+text-decoration: none; 
+}
+a:visited {
+color: rgb(128, 0, 0);
+text-decoration: none;
+}
+a:hover {
+color: blueviolet;
+text-decoration: underline;
+}
+ul {
+  color:#000099;
+}
+.Row
+{
+  display: table;
+  table-layout: fixed; /*Optional*/
+}
+.Column
+{
+  display: table-cell;
 }

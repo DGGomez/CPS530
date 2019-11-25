@@ -12,16 +12,34 @@ class NavBar extends Component {
                     <div className="navbar-header">
                         <Link to="/" className="navbar-brand">
                             <strong>
-                                <img className="logo" align="left" src="./images/logo_2.png" alt="react-logo"/>
-                                STUFF
+                                Page 1
                             </strong>
                         </Link>
-                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsible" aria-expanded="false">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
+                        <Link to="/page2" className="navbar-brand">
+                            <strong>
+                                Page 2
+                            </strong>
+                        </Link>
+                        <Link to="/page3" className="navbar-brand">
+                            <strong>
+                                Page 3
+                            </strong>
+                        </Link>
+                        <Link to="/page4" className="navbar-brand">
+                            <strong>
+                                Page 4
+                            </strong>
+                        </Link>
+                        <Link to="/page5" className="navbar-brand">
+                            <strong>
+                                Page 5
+                            </strong>
+                        </Link>
+                        <Link to="/page6" className="navbar-brand">
+                            <strong>
+                                Page 6
+                            </strong>
+                        </Link>
                     </div>
                 </div>
             </nav>
